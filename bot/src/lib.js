@@ -5,7 +5,7 @@ const axios = require("axios");
 // Constants:
 const channelId = process.env.DISCORD_BOT_CHANNEL;
 
-async function sendMessage(client, post, subreddit) {
+async function sendMessage(client, post) {
   if (!post) {
     throw new Error("Must be valid post");
   }
@@ -24,13 +24,13 @@ async function sendMessage(client, post, subreddit) {
       .setImage(post.url)
       .setTimestamp()
       .setFooter({
-        text: "r/" + subreddit,
-        url: "https://www.reddit.com/r/" + subreddit,
+        text: "r/" + post.subreddit,
+        url: "https://www.reddit.com/r/" + post.subreddit,
       });
 
     client.channels.cache.get(channelId).send({ embeds: [exampleEmbed] });
   } catch (error) {
-    console.error("Error on sendMessage");
+    console.error(error);
   }
 }
 

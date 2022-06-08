@@ -19,14 +19,14 @@ client.on("ready", async () => {
   console.log(`Logged in as ${client.user.tag}!`);
 
   try {
-    sendMessage(client, await getTopOfDay(subreddit), subreddit);
+    sendMessage(client, await getTopOfDay(subreddit));
   } catch (error) {
     console.error("No posts found");
   }
 
   cron.schedule("0 * * * *", async () => {
     try {
-      sendMessage(client, await getTopOfDay(subreddit), subreddit);
+      sendMessage(client, await getTopOfDay(subreddit));
     } catch (error) {
       console.error("No posts found");
     }
