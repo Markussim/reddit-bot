@@ -18,10 +18,18 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 client.on("ready", async () => {
   console.log(`Logged in as ${client.user.tag}!`);
 
-  sendMessage(client, await getTopOfDay(subreddit), subreddit);
+  try {
+    sendMessage(client, await getTopOfDay(subreddit), subreddit);
+  } catch (error) {
+    console.error("No posts found");
+  }
 
   cron.schedule("0 * * * *", async () => {
-    sendMessage(client, await getTopOfDay(subreddit), subreddit);
+    try {
+      sendMessage(client, await getTopOfDay(subreddit), subreddit);
+    } catch (error) {
+      console.error("No posts found");
+    }
   });
 });
 
