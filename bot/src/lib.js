@@ -2,6 +2,9 @@
 const { MessageEmbed } = require("discord.js");
 const axios = require("axios");
 
+// Constants:
+const channelId = process.env.DISCORD_BOT_CHANNEL;
+
 async function sendMessage(client, post, subreddit) {
   if (!post) {
     throw new Error("Must be valid post");
@@ -24,9 +27,7 @@ async function sendMessage(client, post, subreddit) {
       url: "https://www.reddit.com/r/" + subreddit,
     });
 
-  client.channels.cache
-    .get("707597727516590090")
-    .send({ embeds: [exampleEmbed] });
+  client.channels.cache.get(channelId).send({ embeds: [exampleEmbed] });
 }
 
 // Export the function

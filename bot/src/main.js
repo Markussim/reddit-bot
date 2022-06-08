@@ -9,7 +9,7 @@ const { sendMessage } = require("./lib.js");
 
 // Constants:
 const token = process.env.DISCORD_BOT_TOKEN;
-const subreddit = "unket";
+const subreddit = process.env.DISCORD_BOT_SUBREDDIT;
 
 // Create a new client instance
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
