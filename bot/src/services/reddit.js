@@ -1,3 +1,4 @@
+// External dependencies:
 const axios = require("axios");
 
 async function getTopOfDay(subreddit) {

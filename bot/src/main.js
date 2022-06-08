@@ -1,10 +1,14 @@
+// External dependencies:
 const { Client, Intents } = require("discord.js");
 const { getTopOfDay } = require("./services/reddit");
 const cron = require("node-cron");
+const dotev = require("dotenv").config();
+
+// Internal dependencies:
 const { sendMessage } = require("./lib.js");
 
+// Constants:
 const token = process.env.DISCORD_BOT_TOKEN;
-
 const subreddit = "unket";
 
 // Create a new client instance
