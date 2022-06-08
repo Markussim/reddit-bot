@@ -1,8 +1,8 @@
 const axios = require("axios");
 
-async function getTopOfDay() {
+async function getTopOfDay(subreddit) {
   const request = await axios.get(
-    "https://www.reddit.com/r/unket/top.json?sort=top&t=hour&limit=1"
+    `https://www.reddit.com/r/${subreddit}/top.json?sort=top&t=hour&limit=1`
   );
   return extractTopOfDay(request);
 }

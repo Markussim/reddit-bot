@@ -5,6 +5,8 @@ const { sendMessage } = require("./lib.js");
 
 const token = process.env.DISCORD_BOT_TOKEN;
 
+const subreddit = "unket";
+
 // Create a new client instance
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
@@ -12,10 +14,10 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 client.on("ready", async () => {
   console.log(`Logged in as ${client.user.tag}!`);
 
-  sendMessage(client, await getTopOfDay());
+  sendMessage(client, await getTopOfDay(subreddit), subreddit);
 
   cron.schedule("0 * * * *", async () => {
-    sendMessage(client, await getTopOfDay());
+    sendMessage(client, await getTopOfDay(subreddit), subreddit);
   });
 });
 
